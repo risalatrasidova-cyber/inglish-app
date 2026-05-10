@@ -29,7 +29,7 @@ export class WordProgress {
   @Index()
   lesson_id: number;
 
-  @Column({ type: 'tinyint' })
+  @Column({ type: 'smallint' })
   level_number: number; // 1, 2 или 3
 
   @Column({ type: 'boolean', default: false })
@@ -39,10 +39,10 @@ export class WordProgress {
   @Column({ type: 'int', default: 0 })
   correct_count: number;
 
-  @Column({ type: 'datetime', nullable: true })
+  @Column({ type: 'timestamp', nullable: true })
   first_correct_at: Date | null;
 
-  @Column({ type: 'datetime', nullable: true })
+  @Column({ type: 'timestamp', nullable: true })
   last_correct_at: Date | null;
 
   // Relations

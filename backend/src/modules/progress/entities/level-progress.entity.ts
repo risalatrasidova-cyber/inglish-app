@@ -24,7 +24,7 @@ export class LevelProgress {
   @Index()
   lesson_id: number;
 
-  @Column({ type: 'tinyint' })
+  @Column({ type: 'smallint' })
   level_number: number; // 1, 2 или 3
 
   @Column({ type: 'decimal', precision: 5, scale: 2, default: 0.0 })
@@ -45,10 +45,10 @@ export class LevelProgress {
   @Column({ type: 'boolean', default: false })
   has_diamond_star: boolean;
 
-  @Column({ type: 'datetime', nullable: true })
+  @Column({ type: 'timestamp', nullable: true })
   first_started_at: Date | null;
 
-  @Column({ type: 'datetime', nullable: true })
+  @Column({ type: 'timestamp', nullable: true })
   last_played_at: Date | null;
 
   // Relations

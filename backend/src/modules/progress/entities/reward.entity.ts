@@ -42,7 +42,7 @@ export class Reward {
   @Column({ name: 'word_id', nullable: true })
   word_id: number | null;
 
-  @Column({ type: 'int', nullable: true })
+  @Column({ type: 'smallint', nullable: true })
   level_number: number | null;
 
   @Column({ type: 'int' })

@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   Index,
 } from 'typeorm';
+import { dateTimeColumnType } from '../../../config/column-types';
 
 @Entity('admins')
 export class Admin {
@@ -21,7 +22,7 @@ export class Admin {
   @CreateDateColumn()
   created_at: Date;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @Column({ type: dateTimeColumnType(), nullable: true })
   last_login: Date | null;
 }
 

@@ -10,6 +10,7 @@ import {
 import { User } from '../../users/entities/user.entity';
 import { Word } from '../../words/entities/word.entity';
 import { Lesson } from '../../lessons/entities/lesson.entity';
+import { dateTimeColumnType } from '../../../config/column-types';
 
 @Entity('word_progress')
 @Unique(['user_id', 'word_id', 'level_number'])
@@ -39,10 +40,10 @@ export class WordProgress {
   @Column({ type: 'int', default: 0 })
   correct_count: number;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @Column({ type: dateTimeColumnType(), nullable: true })
   first_correct_at: Date | null;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @Column({ type: dateTimeColumnType(), nullable: true })
   last_correct_at: Date | null;
 
   // Relations

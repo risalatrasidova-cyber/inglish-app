@@ -48,7 +48,6 @@ export class InitialMigration1700000000000 implements MigrationInterface {
             type: 'timestamp',
             isNullable: false,
             default: 'CURRENT_TIMESTAMP',
-            onUpdate: 'CURRENT_TIMESTAMP',
           },
         ],
       }),
@@ -123,7 +122,6 @@ export class InitialMigration1700000000000 implements MigrationInterface {
             type: 'timestamp',
             isNullable: false,
             default: 'CURRENT_TIMESTAMP',
-            onUpdate: 'CURRENT_TIMESTAMP',
           },
         ],
       }),
@@ -279,7 +277,7 @@ export class InitialMigration1700000000000 implements MigrationInterface {
           },
           {
             name: 'level_number',
-            type: 'tinyint',
+            type: 'smallint',
             isNullable: false,
           },
           {
@@ -410,7 +408,7 @@ export class InitialMigration1700000000000 implements MigrationInterface {
           },
           {
             name: 'level_number',
-            type: 'tinyint',
+            type: 'smallint',
             isNullable: false,
           },
           {
@@ -548,7 +546,7 @@ export class InitialMigration1700000000000 implements MigrationInterface {
           },
           {
             name: 'level_number',
-            type: 'tinyint',
+            type: 'smallint',
             isNullable: true,
           },
           {

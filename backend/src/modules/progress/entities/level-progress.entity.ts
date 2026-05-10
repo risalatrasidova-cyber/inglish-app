@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 import { User } from '../../users/entities/user.entity';
 import { Lesson } from '../../lessons/entities/lesson.entity';
+import { dateTimeColumnType } from '../../../config/column-types';
 
 @Entity('level_progress')
 @Unique(['user_id', 'lesson_id', 'level_number'])
@@ -45,10 +46,10 @@ export class LevelProgress {
   @Column({ type: 'boolean', default: false })
   has_diamond_star: boolean;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @Column({ type: dateTimeColumnType(), nullable: true })
   first_started_at: Date | null;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @Column({ type: dateTimeColumnType(), nullable: true })
   last_played_at: Date | null;
 
   // Relations

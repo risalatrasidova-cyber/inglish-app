@@ -17,13 +17,16 @@ const dataSourceConfig: any = {
 if (dbType === 'sqlite') {
   // Тот же путь, что и в app: относительно текущей папки (запускай команды из backend!)
   dataSourceConfig.database = join(process.cwd(), process.env.DB_DATABASE || 'inglish_app.db');
+} else if (process.env.DATABASE_URL) {
+  dataSourceConfig.url = process.env.DATABASE_URL;
+  dataSourceConfig.ssl =
+    process.env.DATABASE_SSL === 'false' ? false : { rejectUnauthorized: false };
 } else {
   dataSourceConfig.host = process.env.DB_HOST || 'localhost';
-  dataSourceConfig.port = parseInt(process.env.DB_PORT) || 5432;
+  dataSourceConfig.port = parseInt(process.env.DB_PORT || '', 10) || 5432;
   dataSourceConfig.username = process.env.DB_USERNAME || 'postgres';
   dataSourceConfig.password = process.env.DB_PASSWORD || 'postgres';
   dataSourceConfig.database = process.env.DB_DATABASE || 'inglish_app';
 }
 
 export const AppDataSource = new DataSource(dataSourceConfig);
-

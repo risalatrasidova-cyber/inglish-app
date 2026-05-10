@@ -39,13 +39,13 @@ export class InitialMigration1700000000000 implements MigrationInterface {
           },
           {
             name: 'created_at',
-            type: 'datetime',
+            type: 'timestamp',
             isNullable: false,
             default: 'CURRENT_TIMESTAMP',
           },
           {
             name: 'updated_at',
-            type: 'datetime',
+            type: 'timestamp',
             isNullable: false,
             default: 'CURRENT_TIMESTAMP',
             onUpdate: 'CURRENT_TIMESTAMP',
@@ -114,13 +114,13 @@ export class InitialMigration1700000000000 implements MigrationInterface {
           },
           {
             name: 'created_at',
-            type: 'datetime',
+            type: 'timestamp',
             isNullable: false,
             default: 'CURRENT_TIMESTAMP',
           },
           {
             name: 'updated_at',
-            type: 'datetime',
+            type: 'timestamp',
             isNullable: false,
             default: 'CURRENT_TIMESTAMP',
             onUpdate: 'CURRENT_TIMESTAMP',
@@ -192,13 +192,13 @@ export class InitialMigration1700000000000 implements MigrationInterface {
           },
           {
             name: 'created_at',
-            type: 'datetime',
+            type: 'timestamp',
             isNullable: false,
             default: 'CURRENT_TIMESTAMP',
           },
           {
             name: 'last_login',
-            type: 'datetime',
+            type: 'timestamp',
             isNullable: true,
           },
         ],
@@ -241,13 +241,13 @@ export class InitialMigration1700000000000 implements MigrationInterface {
           },
           {
             name: 'created_at',
-            type: 'datetime',
+            type: 'timestamp',
             isNullable: false,
             default: 'CURRENT_TIMESTAMP',
           },
           {
             name: 'last_login',
-            type: 'datetime',
+            type: 'timestamp',
             isNullable: true,
           },
         ],
@@ -322,12 +322,12 @@ export class InitialMigration1700000000000 implements MigrationInterface {
           },
           {
             name: 'first_started_at',
-            type: 'datetime',
+            type: 'timestamp',
             isNullable: true,
           },
           {
             name: 'last_played_at',
-            type: 'datetime',
+            type: 'timestamp',
             isNullable: true,
           },
         ],
@@ -427,12 +427,12 @@ export class InitialMigration1700000000000 implements MigrationInterface {
           },
           {
             name: 'first_correct_at',
-            type: 'datetime',
+            type: 'timestamp',
             isNullable: true,
           },
           {
             name: 'last_correct_at',
-            type: 'datetime',
+            type: 'timestamp',
             isNullable: true,
           },
         ],
@@ -558,7 +558,7 @@ export class InitialMigration1700000000000 implements MigrationInterface {
           },
           {
             name: 'created_at',
-            type: 'datetime',
+            type: 'timestamp',
             isNullable: false,
             default: 'CURRENT_TIMESTAMP',
           },
@@ -671,7 +671,7 @@ export class InitialMigration1700000000000 implements MigrationInterface {
           },
           {
             name: 'created_at',
-            type: 'datetime',
+            type: 'timestamp',
             isNullable: false,
             default: 'CURRENT_TIMESTAMP',
           },

@@ -34,8 +34,8 @@
 | `description` | TEXT | NULL | Описание урока (опционально) |
 | `order` | INT | NULL, DEFAULT 0 | Порядок отображения на главном экране |
 | `is_active` | BOOLEAN | NOT NULL, DEFAULT TRUE | Активен ли урок (отображается пользователям) |
-| `created_at` | DATETIME | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Дата и время создания |
-| `updated_at` | DATETIME | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | Дата и время последнего изменения |
+| `created_at` | timestamp | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Дата и время создания |
+| `updated_at` | timestamp | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | Дата и время последнего изменения |
 
 **Индексы:**
 - PRIMARY KEY (`id`)
@@ -56,8 +56,8 @@
 | `lesson_id` | INT | NOT NULL, FOREIGN KEY -> lessons.id | ID урока, к которому относится слово |
 | `audio_file_path` | VARCHAR(500) | NOT NULL | Путь к аудио файлу на сервере (например: "/uploads/audio/word_123_hello.mp3") |
 | `audio_file_name` | VARCHAR(255) | NULL | Оригинальное имя файла (для справки) |
-| `created_at` | DATETIME | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Дата и время создания |
-| `updated_at` | DATETIME | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | Дата и время последнего изменения |
+| `created_at` | timestamp | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Дата и время создания |
+| `updated_at` | timestamp | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | Дата и время последнего изменения |
 
 **Индексы:**
 - PRIMARY KEY (`id`)
@@ -81,8 +81,8 @@
 | `id` | INT | PRIMARY KEY, AUTO_INCREMENT | Уникальный идентификатор пользователя |
 | `login` | VARCHAR(100) | NOT NULL, UNIQUE | Логин пользователя (уникальный) |
 | `total_money` | INT | NOT NULL, DEFAULT 0 | Общее количество заработанных денег (сумма всех вознаграждений) |
-| `created_at` | DATETIME | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Дата и время регистрации |
-| `last_login` | DATETIME | NULL | Дата и время последнего входа |
+| `created_at` | timestamp | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Дата и время регистрации |
+| `last_login` | timestamp | NULL | Дата и время последнего входа |
 
 **Индексы:**
 - PRIMARY KEY (`id`)
@@ -104,8 +104,8 @@
 | `id` | INT | PRIMARY KEY, AUTO_INCREMENT | Уникальный идентификатор администратора |
 | `login` | VARCHAR(100) | NOT NULL, UNIQUE | Логин администратора (уникальный) |
 | `password_hash` | VARCHAR(255) | NOT NULL | Хеш пароля (bcrypt, длина ~60 символов) |
-| `created_at` | DATETIME | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Дата и время создания |
-| `last_login` | DATETIME | NULL | Дата и время последнего входа |
+| `created_at` | timestamp | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Дата и время создания |
+| `last_login` | timestamp | NULL | Дата и время последнего входа |
 
 **Индексы:**
 - PRIMARY KEY (`id`)
@@ -133,8 +133,8 @@
 | `is_completed` | BOOLEAN | NOT NULL, DEFAULT FALSE | Статус "пройден" (достигнут ли 70%) |
 | `has_gold_star` | BOOLEAN | NOT NULL, DEFAULT FALSE | Получена ли уже золотая звезда (за 90%) |
 | `has_diamond_star` | BOOLEAN | NOT NULL, DEFAULT FALSE | Получен ли уже бриллиант (за 100%) |
-| `first_started_at` | DATETIME | NULL | Когда впервые начал уровень |
-| `last_played_at` | DATETIME | NULL | Когда последний раз играл |
+| `first_started_at` | timestamp | NULL | Когда впервые начал уровень |
+| `last_played_at` | timestamp | NULL | Когда последний раз играл |
 
 **Индексы:**
 - PRIMARY KEY (`id`)
@@ -165,8 +165,8 @@
 | `level_number` | TINYINT | NOT NULL | Номер уровня (1, 2 или 3) |
 | `is_passed` | BOOLEAN | NOT NULL, DEFAULT FALSE | Факт: "Это слово хоть раз было пройдено правильно в этом уровне" |
 | `correct_count` | INT | NOT NULL, DEFAULT 0 | Сколько раз правильно отвечал на это слово |
-| `first_correct_at` | DATETIME | NULL | Когда впервые правильно ответил на это слово |
-| `last_correct_at` | DATETIME | NULL | Когда последний раз правильно ответил |
+| `first_correct_at` | timestamp | NULL | Когда впервые правильно ответил на это слово |
+| `last_correct_at` | timestamp | NULL | Когда последний раз правильно ответил |
 
 **Индексы:**
 - PRIMARY KEY (`id`)
@@ -201,7 +201,7 @@
 | `word_id` | INT | NULL, FOREIGN KEY -> words.id | ID слова (обязательно для reward_type='word') |
 | `level_number` | TINYINT | NULL | Номер уровня (обязательно для всех типов) |
 | `amount` | INT | NOT NULL | Сумма вознаграждения (5, 100 или 150 рублей) |
-| `created_at` | DATETIME | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Дата и время получения вознаграждения |
+| `created_at` | timestamp | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Дата и время получения вознаграждения |
 
 **Индексы:**
 - PRIMARY KEY (`id`)
@@ -239,7 +239,7 @@
 | `entity_id` | INT | NULL | ID сущности (если применимо) |
 | `details` | JSON | NULL | Детали действия в формате JSON (старые/новые значения) |
 | `ip_address` | VARCHAR(45) | NULL | IP адрес администратора |
-| `created_at` | DATETIME | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Дата и время действия |
+| `created_at` | timestamp | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Дата и время действия |
 
 **Индексы:**
 - PRIMARY KEY (`id`)

@@ -402,8 +402,8 @@
 - `description` (TEXT, NULL) - описание урока (опционально)
 - `order` (INT, NULL) - порядок отображения
 - `is_active` (BOOLEAN, DEFAULT TRUE) - активен ли урок
-- `created_at` (DATETIME) - дата создания
-- `updated_at` (DATETIME) - дата последнего изменения
+- `created_at` (timestamp) - дата создания
+- `updated_at` (timestamp) - дата последнего изменения
 
 ### **Таблица: Words (Слова)**
 - `id` (INT, PRIMARY KEY, AUTO_INCREMENT)
@@ -412,15 +412,15 @@
 - `lesson_id` (INT, FOREIGN KEY -> Lessons.id) - ID урока
 - `audio_file_path` (VARCHAR, NOT NULL) - путь к аудио файлу
 - `audio_file_name` (VARCHAR, NULL) - оригинальное имя файла
-- `created_at` (DATETIME) - дата создания
-- `updated_at` (DATETIME) - дата последнего изменения
+- `created_at` (timestamp) - дата создания
+- `updated_at` (timestamp) - дата последнего изменения
 
 ### **Таблица: Admins (Администраторы)**
 - `id` (INT, PRIMARY KEY, AUTO_INCREMENT)
 - `login` (VARCHAR, UNIQUE, NOT NULL) - логин администратора
 - `password_hash` (VARCHAR, NOT NULL) - хеш пароля (bcrypt)
-- `created_at` (DATETIME) - дата создания
-- `last_login` (DATETIME, NULL) - последний вход
+- `created_at` (timestamp) - дата создания
+- `last_login` (timestamp, NULL) - последний вход
 
 ### **Таблица: AdminLogs (Логи действий администратора)**
 - `id` (INT, PRIMARY KEY, AUTO_INCREMENT)
@@ -429,7 +429,7 @@
 - `entity_type` (VARCHAR) - тип сущности (lesson, word, user)
 - `entity_id` (INT) - ID сущности
 - `details` (TEXT, NULL) - детали действия (JSON)
-- `created_at` (DATETIME) - дата и время действия
+- `created_at` (timestamp) - дата и время действия
 
 ---
 

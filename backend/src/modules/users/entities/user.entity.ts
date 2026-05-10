@@ -22,6 +22,6 @@ export class User {
   created_at: Date;
 
   @Column({ type: 'timestamp', nullable: true })
-  last_login: Date | null;
+  last_login: Date;
 }
 

@@ -13,7 +13,14 @@ import type {
   CheckAnswerLevel1Response,
 } from '../types/api';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+/**
+ * В Vite основной env-ключ: VITE_API_URL.
+ * NEXT_PUBLIC_API_URL добавлен как дополнительный fallback для Vercel-конфигов.
+ */
+const env = import.meta.env as Record<string, string | undefined>;
+const API_URL = env.VITE_API_URL || env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+
+export const API_BASE = API_URL.trim().replace(/\/$/, '');
 
 const api = axios.create({
   baseURL: API_BASE,

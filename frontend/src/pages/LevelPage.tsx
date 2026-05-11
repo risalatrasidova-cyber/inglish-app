@@ -2,11 +2,9 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
-import { progressApi } from '../services/api';
+import { API_BASE, progressApi } from '../services/api';
 import type { NextWordPayload, CheckAnswerLevel1Response } from '../types/api';
 import { useAuth } from '../contexts/AuthContext';
-
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 export function LevelPage() {
   const { refreshUser } = useAuth();
@@ -51,9 +49,8 @@ export function LevelPage() {
   });
 
   const audioUrl = useMemo(() => {
-    if (!nextWord?.word?.id) return '';
-    const base = API_BASE.replace(/\/$/, '');
-    return `${base}/audio/${nextWord.word.id}`;
+    if (!nextWord?.word?.id || !API_BASE) return '';
+    return `${API_BASE}/audio/${nextWord.word.id}`;
   }, [nextWord?.word?.id]);
 
   useEffect(() => {

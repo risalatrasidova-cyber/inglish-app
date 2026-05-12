@@ -4,6 +4,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
+import { DataSource } from 'typeorm';
 import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 
@@ -20,6 +21,17 @@ function allowedCorsOrigins(): string[] {
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+
+  // Пустая Postgres на Render: без миграций таблицы (users и т.д.) не существуют (synchronize: false).
+  if (process.env.SKIP_DB_MIGRATIONS_ON_BOOT !== '1') {
+    const dataSource = app.get(DataSource);
+    const executed = await dataSource.runMigrations();
+    if (executed.length) {
+      console.log(`Migrations applied: ${executed.map((m) => m.name).join(', ')}`);
+    } else {
+      console.log('Migrations: no pending migrations');
+    }
+  }
 
   // Статическая раздача файлов (аудио)
   app.useStaticAssets(join(__dirname, '..', 'uploads'), {
